@@ -1,0 +1,123 @@
+{
+  "info": {
+    "_postman_id": "collab-task-api-collection",
+    "name": "Collaborative Task Management System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "users"]
+        }
+      }
+    },
+    {
+      "name": "Get All Teams",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/teams",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "teams"]
+        }
+      }
+    },
+    {
+      "name": "Get All Tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/tasks",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "tasks"]
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"demo\",\n  \"email\": \"demo@example.com\",\n  \"password\": \"pass123\",\n  \"role\": \"MEMBER\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/users",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "users"]
+        }
+      }
+    },
+    {
+      "name": "Create Team",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Demo Team\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/teams",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "teams"]
+        }
+      }
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Demo Task\",\n  \"description\": \"This is a demo task.\",\n  \"team\": {\"id\": 1}\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/tasks",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "tasks"]
+        }
+      }
+    },
+    {
+      "name": "Add Comment to Task",
+      "request": {
+        "method": "POST",
+        "header": [{"key":"Content-Type","value":"application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"content\": \"Great work!\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/comments/task/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "comments", "task", "1"]
+        }
+      }
+    }
+  ]
+}
