@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Collaborative Task Management System
 
 ## Overview
@@ -36,3 +37,6 @@ A full-stack collaborative task management platform with multi-user roles (Admin
 
 ---
 _See each folder for more details._
+=======
+# Collaborative-Task-Management-system-
+>>>>>>> c4c99127d191a63f230a2bf1e1bc8a408b24344e
