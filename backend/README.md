@@ -12,10 +12,158 @@ This is the Java Spring Boot backend for the Collaborative Task Management Syste
 - Notification simulation (console/API)
 - Concurrency handling for task updates
 
+## 📋 Prerequisites & Installation
+
+### 🔧 **Java 17+ Installation**
+
+#### Windows
+1. **Download OpenJDK 17**
+   - Visit: https://adoptium.net/temurin/releases/
+   - Download Windows x64 MSI installer
+   - Run installer as Administrator
+
+2. **Set Environment Variables**
+   ```cmd
+   # Set JAVA_HOME
+   setx JAVA_HOME "C:\Program Files\Eclipse Adoptium\jdk-17.x.x.x-hotspot"
+   
+   # Add to PATH
+   setx PATH "%PATH%;%JAVA_HOME%\bin"
+   ```
+
+3. **Verify Installation**
+   ```cmd
+   java -version
+   javac -version
+   ```
+
+#### macOS
+```bash
+# Using Homebrew (Recommended)
+brew install --cask temurin17
+
+# Verify installation
+java -version
+javac -version
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Update package list
+sudo apt update
+
+# Install OpenJDK 17
+sudo apt install openjdk-17-jdk
+
+# Set JAVA_HOME
+echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> ~/.bashrc
+echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
+source ~/.bashrc
+
+# Verify installation
+java -version
+javac -version
+```
+
+### 🏗️ **Maven 3.8+ Installation**
+
+#### Windows
+1. **Download Maven**
+   - Visit: https://maven.apache.org/download.cgi
+   - Download Binary zip archive
+
+2. **Extract and Setup**
+   ```cmd
+   # Extract to C:\Program Files\Apache\maven
+   # Set environment variables
+   setx MAVEN_HOME "C:\Program Files\Apache\maven"
+   setx PATH "%PATH%;%MAVEN_HOME%\bin"
+   ```
+
+3. **Verify Installation**
+   ```cmd
+   mvn -version
+   ```
+
+#### macOS
+```bash
+# Using Homebrew
+brew install maven
+
+# Verify installation
+mvn -version
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Install Maven
+sudo apt install maven
+
+# Verify installation
+mvn -version
+```
+
+### 🗄️ **MySQL 8+ Installation**
+
+#### Windows
+1. **Download MySQL Installer**
+   - Visit: https://dev.mysql.com/downloads/installer/
+   - Download MySQL Installer for Windows
+
+2. **Installation Steps**
+   - Run installer as Administrator
+   - Choose "Developer Default" or "Server only"
+   - Set root password (remember this!)
+   - Complete installation
+
+3. **Start MySQL Service**
+   ```cmd
+   # As Administrator
+   net start mysql80
+   ```
+
+4. **Verify Installation**
+   ```cmd
+   mysql -u root -p
+   # Enter your root password
+   ```
+
+#### macOS
+```bash
+# Using Homebrew
+brew install mysql
+
+# Start MySQL service
+brew services start mysql
+
+# Secure installation
+mysql_secure_installation
+
+# Verify installation
+mysql -u root -p
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Install MySQL
+sudo apt update
+sudo apt install mysql-server
+
+# Start MySQL service
+sudo systemctl start mysql
+sudo systemctl enable mysql
+
+# Secure installation
+sudo mysql_secure_installation
+
+# Verify installation
+sudo mysql -u root -p
+```
+
 ## Prerequisites
-- Java 17+
-- Maven 3.8+
-- MySQL 8+
+- Java 17+ ✅
+- Maven 3.8+ ✅
+- MySQL 8+ ✅
 
 ## 🚀 Complete Setup & Execution Guide
 
@@ -158,34 +306,6 @@ This is the Java Spring Boot backend for the Collaborative Task Management Syste
      -d '{"username": "admin", "email": "admin@example.com", "password": "admin123", "role": "ADMIN"}'
    ```
 
-## Security Configuration
-- **Environment Variables**: Use environment variables for sensitive data (see `env.example`)
-- **JWT Secret**: Change the default JWT secret in production
-- **Database**: Use strong passwords and limit database access
-- **HTTPS**: Enable HTTPS in production environments
-
-## API Overview
-- **Users:** `/api/users` (CRUD, get by team)
-- **Teams:** `/api/teams` (CRUD)
-- **Tasks:** `/api/tasks` (CRUD, by team/assignee/status)
-- **Comments:** `/api/comments` (add/view by task)
-- **Analytics:** `/api/tasks/analytics/completed/user/{userId}`
-- **Role-based access:**
-  - Admin: manage users/teams
-  - Manager: assign tasks, view team progress
-  - Member: update task status, add comments
-
-## Testing
-- Use Postman or any API client to test endpoints.
-- Example: `GET /api/users`, `POST /api/tasks`, etc.
-
-## Docker (Bonus)
-To run backend in Docker:
-```sh
-docker build -t collab-task-backend .
-docker run -p 8080:8080 collab-task-backend
-```
-
 ## 🔧 Troubleshooting
 
 ### Common Issues & Solutions
@@ -249,6 +369,20 @@ docker run -p 8080:8080 collab-task-backend
    mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
    ```
 
+## 📊 API Documentation
+
+### Core Endpoints
+- **Users:** `/api/users` (CRUD, get by team)
+- **Teams:** `/api/teams` (CRUD)
+- **Tasks:** `/api/tasks` (CRUD, by team/assignee/status)
+- **Comments:** `/api/comments` (add/view by task)
+- **Analytics:** `/api/tasks/analytics/completed/user/{userId}`
+
+### Role-based Access
+- **Admin**: manage users/teams
+- **Manager**: assign tasks, view team progress
+- **Member**: update task status, add comments
+
 ## 🐳 Docker Deployment
 
 ### Build Docker Image
@@ -263,6 +397,23 @@ docker run -p 8080:8080 \
   -e DB_PASSWORD=your_password \
   -e JWT_SECRET=your_secret \
   collab-task-backend
+```
+
+### Docker Compose (Optional)
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_USERNAME=collab_user
+      - DB_PASSWORD=your_password
+      - JWT_SECRET=your_secret
+    depends_on:
+      - mysql
 ```
 
 ## 📝 Production Notes

@@ -13,9 +13,91 @@ This is the React.js frontend for the Collaborative Task Management System. It p
 - Secure authentication handling
 - Role-based access control
 
+## 📋 Prerequisites & Installation
+
+### 🟢 **Node.js 18+ & npm 9+ Installation**
+
+#### Windows
+1. **Download Node.js**
+   - Visit: https://nodejs.org/
+   - Download LTS version (18.x or higher)
+   - Run installer with default settings
+
+2. **Verify Installation**
+   ```cmd
+   node --version
+   npm --version
+   ```
+
+3. **Update npm (if needed)**
+   ```cmd
+   npm install -g npm@latest
+   ```
+
+#### macOS
+```bash
+# Using Homebrew (Recommended)
+brew install node
+
+# Alternative: Using Node Version Manager (nvm)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+source ~/.zshrc  # or ~/.bash_profile
+nvm install 18
+nvm use 18
+
+# Verify installation
+node --version
+npm --version
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Using NodeSource repository (Recommended)
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Alternative: Using snap
+sudo snap install node --classic
+
+# Verify installation
+node --version
+npm --version
+```
+
+### 🔧 **Git Installation (if not already installed)**
+
+#### Windows
+1. **Download Git**
+   - Visit: https://git-scm.com/download/win
+   - Download and install with default settings
+
+2. **Verify Installation**
+   ```cmd
+   git --version
+   ```
+
+#### macOS
+```bash
+# Git usually comes pre-installed
+# If not, install with Homebrew
+brew install git
+
+# Verify installation
+git --version
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Install Git
+sudo apt install git
+
+# Verify installation
+git --version
+```
+
 ## Prerequisites
-- Node.js 18+
-- npm 9+
+- Node.js 18+ ✅
+- npm 9+ ✅
 
 ## 🚀 Complete Setup & Execution Guide
 
@@ -124,37 +206,6 @@ This is the React.js frontend for the Collaborative Task Management System. It p
    serve -s build -l 3000
    ```
 
-## Security Features
-- **Environment Variables**: Configure sensitive data via environment variables
-- **HTTPS**: Use HTTPS in production environments
-- **Input Validation**: All user inputs are validated
-- **XSS Protection**: Built-in React XSS protection
-- **CORS**: Proper CORS configuration with backend
-
-## Project Structure
-- `src/components/` — Dashboard components for each role, tables, forms
-- `src/App.js` — Routing and layout
-- `src/index.js` — App entry point
-- `public/` — Static assets and HTML
-
-## API Integration
-- All API calls are proxied to `http://localhost:8080` (Spring Boot backend)
-- Update proxy in `package.json` if backend runs elsewhere
-- Secure authentication token handling
-- Error handling and user feedback
-
-## Usage
-- Use the login form to select a role and demo dashboards
-- For real authentication, integrate with backend JWT endpoints
-- All user actions are logged for security monitoring
-
-## Security Best Practices
-- Never store sensitive data in localStorage
-- Implement proper session management
-- Use HTTPS in production
-- Regular dependency updates
-- Input sanitization and validation
-
 ## 🔧 Troubleshooting
 
 ### Common Issues & Solutions
@@ -211,6 +262,37 @@ This is the React.js frontend for the Collaborative Task Management System. It p
 - **Development**: http://localhost:3000
 - **Production Build**: http://localhost:3000 (after npm run build)
 - **Backend API**: http://localhost:8080
+
+## Security Features
+- **Environment Variables**: Configure sensitive data via environment variables
+- **HTTPS**: Use HTTPS in production environments
+- **Input Validation**: All user inputs are validated
+- **XSS Protection**: Built-in React XSS protection
+- **CORS**: Proper CORS configuration with backend
+
+## Project Structure
+- `src/components/` — Dashboard components for each role, tables, forms
+- `src/App.js` — Routing and layout
+- `src/index.js` — App entry point
+- `public/` — Static assets and HTML
+
+## API Integration
+- All API calls are proxied to `http://localhost:8080` (Spring Boot backend)
+- Update proxy in `package.json` if backend runs elsewhere
+- Secure authentication token handling
+- Error handling and user feedback
+
+## Usage
+- Use the login form to select a role and demo dashboards
+- For real authentication, integrate with backend JWT endpoints
+- All user actions are logged for security monitoring
+
+## Security Best Practices
+- Never store sensitive data in localStorage
+- Implement proper session management
+- Use HTTPS in production
+- Regular dependency updates
+- Input sanitization and validation
 
 ## 📝 Notes
 - For demo: Enter valid user/team IDs to view data

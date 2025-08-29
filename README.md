@@ -7,14 +7,234 @@ A full-stack collaborative task management platform with multi-user roles (Admin
 - `/backend` — Java Spring Boot backend (REST API, MySQL)
 - `/frontend` — React.js frontend (SPA)
 
+## 📋 Prerequisites & Installation Guides
+
+### 🔧 **Java 17+ Installation**
+
+#### Windows
+1. **Download OpenJDK 17**
+   - Visit: https://adoptium.net/temurin/releases/
+   - Download Windows x64 MSI installer
+   - Run installer as Administrator
+
+2. **Set Environment Variables**
+   ```cmd
+   # Set JAVA_HOME
+   setx JAVA_HOME "C:\Program Files\Eclipse Adoptium\jdk-17.x.x.x-hotspot"
+   
+   # Add to PATH
+   setx PATH "%PATH%;%JAVA_HOME%\bin"
+   ```
+
+3. **Verify Installation**
+   ```cmd
+   java -version
+   javac -version
+   ```
+
+#### macOS
+1. **Using Homebrew (Recommended)**
+   ```bash
+   brew install --cask temurin17
+   ```
+
+2. **Manual Installation**
+   - Download macOS x64 DMG from https://adoptium.net/
+   - Install and set JAVA_HOME in ~/.zshrc or ~/.bash_profile
+
+3. **Verify Installation**
+   ```bash
+   java -version
+   javac -version
+   ```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Update package list
+sudo apt update
+
+# Install OpenJDK 17
+sudo apt install openjdk-17-jdk
+
+# Set JAVA_HOME
+echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> ~/.bashrc
+echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
+source ~/.bashrc
+
+# Verify installation
+java -version
+javac -version
+```
+
+### 🏗️ **Maven 3.8+ Installation**
+
+#### Windows
+1. **Download Maven**
+   - Visit: https://maven.apache.org/download.cgi
+   - Download Binary zip archive
+
+2. **Extract and Setup**
+   ```cmd
+   # Extract to C:\Program Files\Apache\maven
+   # Set environment variables
+   setx MAVEN_HOME "C:\Program Files\Apache\maven"
+   setx PATH "%PATH%;%MAVEN_HOME%\bin"
+   ```
+
+3. **Verify Installation**
+   ```cmd
+   mvn -version
+   ```
+
+#### macOS
+```bash
+# Using Homebrew
+brew install maven
+
+# Verify installation
+mvn -version
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Install Maven
+sudo apt install maven
+
+# Verify installation
+mvn -version
+```
+
+### 🗄️ **MySQL 8+ Installation**
+
+#### Windows
+1. **Download MySQL Installer**
+   - Visit: https://dev.mysql.com/downloads/installer/
+   - Download MySQL Installer for Windows
+
+2. **Installation Steps**
+   - Run installer as Administrator
+   - Choose "Developer Default" or "Server only"
+   - Set root password (remember this!)
+   - Complete installation
+
+3. **Start MySQL Service**
+   ```cmd
+   # As Administrator
+   net start mysql80
+   ```
+
+4. **Verify Installation**
+   ```cmd
+   mysql -u root -p
+   # Enter your root password
+   ```
+
+#### macOS
+```bash
+# Using Homebrew
+brew install mysql
+
+# Start MySQL service
+brew services start mysql
+
+# Secure installation
+mysql_secure_installation
+
+# Verify installation
+mysql -u root -p
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Install MySQL
+sudo apt update
+sudo apt install mysql-server
+
+# Start MySQL service
+sudo systemctl start mysql
+sudo systemctl enable mysql
+
+# Secure installation
+sudo mysql_secure_installation
+
+# Verify installation
+sudo mysql -u root -p
+```
+
+### 🟢 **Node.js 18+ & npm 9+ Installation**
+
+#### Windows
+1. **Download Node.js**
+   - Visit: https://nodejs.org/
+   - Download LTS version (18.x or higher)
+   - Run installer
+
+2. **Verify Installation**
+   ```cmd
+   node --version
+   npm --version
+   ```
+
+#### macOS
+```bash
+# Using Homebrew
+brew install node
+
+# Verify installation
+node --version
+npm --version
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Using NodeSource repository
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Verify installation
+node --version
+npm --version
+```
+
+### 🔧 **Git Installation**
+
+#### Windows
+1. **Download Git**
+   - Visit: https://git-scm.com/download/win
+   - Download and install
+
+2. **Verify Installation**
+   ```cmd
+   git --version
+   ```
+
+#### macOS
+```bash
+# Git usually comes pre-installed
+# If not, install with Homebrew
+brew install git
+
+# Verify installation
+git --version
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Install Git
+sudo apt install git
+
+# Verify installation
+git --version
+```
+
 ## 🚀 Complete Setup & Execution Guide
 
 ### Prerequisites
-- **Java 17+** installed and configured
-- **Maven 3.8+** installed and configured
-- **MySQL 8+** installed and running
-- **Node.js 18+** and **npm 9+** installed
-- **Git** for version control
+- **Java 17+** installed and configured ✅
+- **Maven 3.8+** installed and configured ✅
+- **MySQL 8+** installed and running ✅
+- **Node.js 18+** and **npm 9+** installed ✅
+- **Git** for version control ✅
 
 ### Step 1: Database Setup
 1. **Start MySQL Service**
@@ -62,7 +282,7 @@ A full-stack collaborative task management platform with multi-user roles (Admin
    
    # Windows (Command Prompt)
    set DB_USERNAME=collab_user
-   set DB_PASSWORD=your_secure_password
+   set DB_PASSWORD=collab_user
    set JWT_SECRET=your_super_secret_key_here
    
    # macOS/Linux
